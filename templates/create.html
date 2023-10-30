@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Url Shortener</title>
+    </head>
+    <body>
+        <h1>
+            URL Shortener
+        </h1>
+
+        {% if error %}
+        <div>
+            <h4>
+                {{ error }}
+            </h4>
+        </div>
+        {% endif %}
+        <div>
+            <form  method="post">
+            {% csrf_token %}
+                <h1>Enter the URL to be shortened : </h1>
+
+                <div>
+                    <input type = "text" name = "long_url" placeholder = "Enter a valid Url"/>
+                </div>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>    
+            </form>
+        </div>
+        {% if short_url %}
+        <div>
+            <h1>Your Short Url -  
+                <a href = "{{ long_url }}">
+                    {{ short_url }}
+                </a>
+            </h1>
+        </div>
+        {% endif %}
+
+        <a href = "/allurl/">
+            ->List all your short urls
+        </a>
+    </body>
+</html>

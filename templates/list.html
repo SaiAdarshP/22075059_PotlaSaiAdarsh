@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Url Shortener</title>
+    </head>
+    <body>
+        <h1>
+            URL Shortener
+        </h1>
+
+        <h2>
+            Your Urls :
+        </h2>
+
+        {% if url_list %}
+            <div>
+                <table >
+                        <tr>
+                            <th>Original Long Url</th>
+                            <th>Generated Shortened Url</th>
+                        </tr>
+                    <tbody>
+                        {% for url in url_list %}
+                        <tr>
+                            <td class = "px-16">{{ url.long_url }}</td>
+                            <td><a href={{ url.long_url }}>{{ url.short_code }}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <h3>
+                You have no generated short urls...
+            </h3>
+        {% endif %}
+
+        <h3>
+            Create a shortened url for you page <a href = "/">here</a>
+        </h3>
+
+    </body>
+</html>
